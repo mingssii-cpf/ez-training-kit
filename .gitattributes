@@ -1,0 +1,10 @@
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+# Preserve the existing skill byte-for-byte for SOURCE-MANIFEST verification.
+skills/** -text
+*.mp3 binary
+*.webp binary
+*.ttf binary

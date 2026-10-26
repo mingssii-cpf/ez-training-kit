@@ -1,0 +1,24 @@
+{
+  "title": "หนึ่งวันกับ EZ · HH:MM <ชื่อตอน>",
+  "series": "Season 1 — หนึ่งวันกับ EZ (Copilot Chat ใน Outlook, Copilot Chat Basic)",
+  "narrator": "EZ (first person)",
+  "voice": "gemini-3.8-flash-tts · Fenrir (AI Studio)",
+  "style_prompt": "Friendly, approachable and natural Thai voice of \"EZ\", a smart, modern AI guide for office staff. Clear, polite and confident; trustworthy. Warm and light, smiling tone, never harsh, aggressive or overly formal. Natural Thai pronunciation; say Copilot, Outlook, Teams, Excel cleanly. Short natural pauses between phrases.",
+  "lead_s": 0.35,
+  "tail_s": 0.75,
+  "facts_source": "<capability matrix row(s) this episode relies on>",
+  "scenes": [
+    {
+      "id": "s1-hook",
+      "narration": "<ปัญหาจริงของหัวหน้า 1–2 ประโยค>",
+      "lines": ["<บรรทัดซับ 1 — ตัดที่จุดหยุดหายใจ>", "<บรรทัดซับ 2>"],
+      "visual": "<what the scene shows>"
+    },
+    {
+      "id": "s2-ez",
+      "narration": "สวัสดีครับ EZ เองครับ วันนี้ EZ จะพา<ผลลัพธ์> ด้วย Copilot ใน Outlook",
+      "lines": ["สวัสดีครับ EZ เองครับ", "วันนี้ EZ จะพา<ผลลัพธ์>", "ด้วย Copilot ใน Outlook"],
+      "visual": "EZ ez-4 waving + bubble 'EZ พามารู้จัก Copilot'; title"
+    }
+  ]
+}
