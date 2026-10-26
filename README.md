@@ -1,78 +1,89 @@
-# EZ Training Kit
+# Explainer Notebook Kit
 
-ชุดธีมและ skill สำหรับผลิตคลิปสอนงานภาษาไทย **“หนึ่งวันกับ EZ”** ในสไตล์ **Explainer Notebook — Style C** ด้วย HyperFrames
+ธีมสำหรับคลิปสอนงานและ explainer: กระดาษตารางสีครีม ตัวอักษรหมึกน้ำเงิน ไฮไลต์เหลือง sticky notes และการ์ดอธิบายเป็นขั้นตอน **ใช้กับแบรนด์หรือมาสคอตอะไรก็ได้ และไม่ใส่มาสคอตก็ได้**
 
-กระดาษตารางสีครีม ตัวอักษรหมึกน้ำเงิน สีเขียวอมฟ้าจาก EZ ไฮไลต์เหลือง ภาพหน้าจอแปะเทป และการ์ด prompt แบบ sticky note ขนาดงาน 1920×1080 / 30 fps
+![ตัวอย่างธีมแบบไม่มีมาสคอต](docs/preview.png)
 
-## สิ่งที่อยู่ใน repo
+## ใครเอาไปใช้ได้ และเริ่มอย่างไร
 
-- [Skill และขั้นตอนผลิต](skills/ez-training-clip/SKILL.md)
-- [สเปกธีม สี ฟอนต์ องค์ประกอบ และ motion](skills/ez-training-clip/references/frame.md)
-- [CSS ที่ใช้จริง](skills/ez-training-clip/assets/style.css)
-- [สคริปต์สร้างตอนใหม่](skills/ez-training-clip/scripts/new_episode.py) และ [ตัวช่วยประกอบฉาก](skills/ez-training-clip/scripts/eplib.py)
-- Templates บทและฉาก ฟอนต์ มาสคอต EZ โลโก้ CPF และ SFX จากชุดต้นฉบับ
-
-เก็บธีมและเครื่องมือไว้ที่เดียวใน `skills/ez-training-clip/` เพื่อไม่ให้ CSS หรือสเปกหลายชุดคลาดกัน การใช้งาน skill ในโปรเจกต์อื่นให้อ้างอิงไฟล์ SKILL.md พร้อม supporting files ทั้งโฟลเดอร์
-
-## เริ่มใช้
-
-ต้องมี Python 3, Node.js/npm และ FFmpeg/ffprobe ใน PATH ส่วน `redact.py` ใช้ Pillow และ `compose_bgm.py` ใช้ NumPy เพิ่มเติม เครื่องมือที่ไม่เรียกสองสคริปต์นี้ไม่ต้องติดตั้งสองแพ็กเกจดังกล่าว
-
-รันจาก root ของ repo:
+Repo นี้เป็น **private** คนที่จะ clone ต้องได้รับสิทธิ์เข้าถึงจากเจ้าของ `mingssii-cpf` ก่อน เมื่อมีสิทธิ์แล้ว:
 
 ```powershell
-python tools/check.py
-python skills/ez-training-clip/scripts/new_episode.py ./episodes s1e3-email
+git clone https://github.com/mingssii-cpf/ez-training-kit.git
+cd ez-training-kit
+python skills/explainer-notebook/scripts/new_episode.py ./episodes my-lesson --title "ประชุมให้ได้ข้อสรุป" --preview
 ```
 
-คำสั่งสร้างตอนใหม่จะไม่เขียนทับโฟลเดอร์ที่มีอยู่แล้ว จากนั้น:
+เปิด `episodes/my-lesson/preview.html` ในเบราว์เซอร์ จะเห็นตัวอย่างนิ่ง 3 ฉากทันที **ขั้นนี้ใช้แค่ Python ไม่ต้องมีเสียงหรือ render วิดีโอก่อน** ส่วน `index.html` เป็น composition สำหรับ HyperFrames ไม่ใช่ player
 
-1. เขียน `episodes/s1e3-email/script.json` และให้เจ้าของงานตรวจบทก่อนทำเสียง
-2. ทดสอบความสามารถ Copilot ที่จะสอนและบันทึกหลักฐานของตอนนั้นเอง
-3. สร้างเสียงจริงเป็น `audio/gemini/<scene-id>.wav` แล้วจับเวลา:
+## ใส่แบรนด์และตัวละครของตัวเอง
+
+```powershell
+python skills/explainer-notebook/scripts/new_episode.py ./episodes team-lesson --title "สื่อสารงานให้ชัดเจน" --brand "ทีมของเรา" --logo ./my-assets/logo.png --mascot ./my-assets/character.webp --preview
+```
+
+- ไม่ส่ง `--mascot`: ใช้การ์ด notebook แทนตัวละคร
+- ไม่ส่ง `--logo`: ไม่มีโลโก้
+- ส่งเฉพาะ `--logo` หรือเฉพาะ `--mascot` ก็ได้ รองรับ PNG, JPEG, WebP และ SVG
+- รูปตัวละครพื้นหลังโปร่งใสจะวางกับกระดาษได้ง่าย ระบบรักษาสัดส่วนภาพ
+- หากต้องการ EZ/CPF แบบเดิม เพิ่ม `--preset ez`; ภาพที่ส่งเองจะ override preset นั้น
+- คำสั่งไม่เขียนทับตอนที่มีอยู่แล้ว ให้แก้ไฟล์ในตอนเดิมหรือใช้ชื่อโฟลเดอร์ใหม่
+
+ดู [ตัวอย่างเปลี่ยนเป็นตัวละครอื่น](docs/custom-preview.png) — ยังคงธีมเดียวกันโดยไม่ใช้ EZ
+
+| อยากเปลี่ยนอะไร | แก้ที่ไฟล์ในโฟลเดอร์ตอน |
+|---|---|
+| ชื่อเรื่อง เนื้อหา prompt และ 3 ขั้นตอน | `script.json` |
+| ชื่อแบรนด์ โลโก้ มาสคอต | `brand.json` และไฟล์ใน `public/` |
+| สี ฟอนต์ และหน้าตาองค์ประกอบ | `tools/style.css` |
+| จัดวางภาพและการเคลื่อนไหว | `tools/build.py` |
+
+ใน `brand.json` ตั้ง `logo` หรือ `mascot` เป็น `null` เพื่อนำออก เปลี่ยนแล้วรัน:
+
+```powershell
+python episodes/team-lesson/tools/build.py
+```
+
+ไฟล์ build และ assets ถูกคัดลอกไปในตอนแล้ว ย้ายโฟลเดอร์ตอนทั้งก้อนไปเครื่องอื่นแล้ว build ต่อได้ ไม่ผูกกับ path เครื่องผู้สร้าง
+
+## ใช้กับ AI เป็น skill
+
+ตัว skill อยู่ที่ [skills/explainer-notebook/SKILL.md](skills/explainer-notebook/SKILL.md) พร้อม supporting files ในโฟลเดอร์เดียวกัน ให้ AI อ่านไฟล์นี้จาก repo ได้เลย ตัวอย่างคำสั่ง:
+
+> อ่าน skills/explainer-notebook/SKILL.md แล้วทำคลิปสอนเรื่องการส่งต่องาน ใช้ธีม notebook นี้ ใช้โลโก้และมาสคอตของฉันจาก my-assets ให้ดู preview ก่อน เลือกเสียงผู้บรรยายให้เข้ากับงานนี้
+
+หากต้องการให้ agent ค้นพบเป็น skill ที่ติดตั้ง ให้ใช้ตัวติดตั้ง skill ของ agent นั้นกับ **ทั้งโฟลเดอร์ explainer-notebook** ไม่ใช่คัดลอกแค่ SKILL.md การอัปเดต repo นี้ไม่ได้ติดตั้ง skill ลงเครื่องให้อัตโนมัติ
+
+## จาก preview เป็นวิดีโอจริง
+
+1. ปรับบทและฉากให้ตรงเรื่อง เลือกเสียงบรรยายและเพลงตามงาน ไม่ได้บังคับ Copilot, HR, EZ หรือผู้ให้บริการเสียง
+2. ใส่เสียงจริงเป็น `audio/voice/<scene-id>.wav` ในโฟลเดอร์ตอน
+3. จาก root ของ repo รัน:
 
    ```powershell
-   python skills/ez-training-clip/scripts/align.py episodes/s1e3-email
-   ```
-
-4. จับภาพหน้าจอจริงและแก้ `redact.json` ให้ตรงกับตำแหน่งไฟล์และข้อมูลที่ต้องปิดบัง ตรวจภาพหลัง redact ด้วยตา
-5. เขียนฉากใน `tools/build.py` ให้ครบทุก scene และรัน:
-
-   ```powershell
-   python episodes/s1e3-email/tools/build.py
-   cd episodes/s1e3-email
+   python skills/explainer-notebook/scripts/align.py episodes/my-lesson
+   python episodes/my-lesson/tools/build.py
+   cd episodes/my-lesson
    npm run check
-   npm run render -- --fps 30 --quality standard --workers 2 --output renders/s1e3-email.mp4
+   npm run render -- --fps 30 --quality standard --workers 2 --output renders/my-lesson.mp4
    ```
 
-6. จาก root ของ repo ตรวจไฟล์ที่ render แล้ว:
+4. กลับมาที่ root ของ repo แล้วรัน `python skills/explainer-notebook/scripts/qa.py episodes/my-lesson episodes/my-lesson/renders/my-lesson.mp4` และตรวจภาพ/เสียงของไฟล์จริง
 
-   ```powershell
-   python skills/ez-training-clip/scripts/qa.py episodes/s1e3-email episodes/s1e3-email/renders/s1e3-email.mp4
-   ```
+Preview เป็นภาพตัวอย่างพร้อม timing สมมติ ไม่มีเสียงบรรยาย ต้องใช้ `align.py` จับเวลาจากเสียงจริงก่อนผลิตคลิปที่มีเสียง ขั้นผลิตใช้ Node.js/npm และ FFmpeg/ffprobe เพิ่มเติม; Pillow ใช้เฉพาะ redact และ NumPy ใช้เฉพาะ compose_bgm
 
-Template มีเพียงสองฉากเริ่มต้น ต้องเติมเนื้อหาและเสียงก่อนผลิตจริง `tools/check.py` ใช้ timing/เสียงเงียบสมมติในโฟลเดอร์ชั่วคราวเพื่อตรวจ scaffold → HTML เท่านั้น ไม่ใช่หลักฐานว่าเสียง ภาพ หรือวิดีโอผ่าน QA
+ดู [ขั้นตอนผลิต](skills/explainer-notebook/references/workflow.md), [สเปกธีม](skills/explainer-notebook/references/frame.md) และ [scene helpers](skills/explainer-notebook/references/eplib.md)
 
-## ขอบเขตและข้ออ้างอิงเดิม
+## ขอบเขตและการดูแล
 
-- Repo นี้แพ็ก skill เดิมจาก `D:/ai_clip/.claude/skills/ez-training-clip` โดยคงไฟล์ต้นฉบับไว้ครบและไม่แก้ installed copies
-- ไม่รวมภาพอีเมล ไฟล์ capture บทของตอนจริง เสียงบรรยาย เพลง Corporate Calm หรือวิดีโอสำเร็จของซีรีส์
-- Reference episode, capability matrix และโฟลเดอร์ style-gate ที่เอกสารเดิมอ้างถึงอยู่ในโปรเจกต์ต้นทาง ไม่ได้รวมใน kit นี้ แต่สร้างสองฉากเริ่มต้นได้ด้วยไฟล์ใน repo
-- รายละเอียดบัญชีที่ sign in แล้ว ตำแหน่ง download/browser tools และชื่อโมเดลเสียงในเอกสารเดิมเป็นบริบทของเครื่องต้นทาง ต้องตรวจใหม่บนเครื่องที่ใช้งาน
-- HyperFrames ปักไว้ที่ `0.8.143` ตามชุดเดิม ไม่มีการอัปเกรดหรือยืนยันบริการภายนอกใหม่ในการแพ็กครั้งนี้
-- กรณี `frame.md` ยังกล่าวถึง DRAFT ให้ยึดการตัดสินใจล่าสุดใน SKILL.md ว่าไม่มี DRAFT tag
-- โลโก้ CPF และมาสคอตเป็นทรัพย์สินแบรนด์เดิม ไม่ได้ให้สิทธิ์ใช้กับแบรนด์อื่น; SFX ใช้เครดิตที่มากับต้นฉบับ ไม่ได้ประกาศ open-source license ครอบไฟล์ทั้งหมด
+เจ้าของ `mingssii-cpf` · งาน `KIT-002` · 2026-10-26 · repo เดิมยังคงเป็น private ชื่อ ez-training-kit แต่ skill หลักเปลี่ยนเป็น explainer-notebook ตามที่ผู้ใช้ขอให้ใช้ธีมกับมาสคอตอื่นได้
 
-## สถานะและการดูแล
+คำสั่งเดิมใน skills/ez-training-clip เปลี่ยนเป็น skills/explainer-notebook; ไฟล์เสียงใช้ audio/voice แทน audio/gemini; ส่วน branding เดิมเลือกด้วย --preset ez ตัว skill ต้นฉบับบนเครื่องผู้ใช้ไม่ได้ถูกแก้
 
-เจ้าของ: `mingssii-cpf` · งาน `KIT-001` · แพ็กเมื่อ 2026-10-26 · เป้าหมาย: private GitHub repo `mingssii-cpf/ez-training-kit`
+[Source manifest](SOURCE-MANIFEST.json) เป็นประวัติของชุด EZ เริ่มต้นใน commit bc25671 ไม่ใช่ checksum ของรุ่นที่ปรับแล้ว โลโก้ CPF/EZ เป็นทรัพย์สินแบรนด์เดิมและอยู่ใน preset เท่านั้น ไม่มีการให้สิทธิ์นำไปใช้กับแบรนด์อื่น; ไฟล์ SFX/ฟอนต์คงเครดิตเดิม ชุดนี้ไม่ได้ประกาศ open-source license ครอบทุกไฟล์
 
-การอนุญาต: ผู้ใช้ขอขึ้น GitHub หลังเลือกแนวทาง repo รวมธีมและ skill เดิม และยืนยันล่าสุดให้ใช้บัญชี `mingssii-cpf` เป็น private repo
+คำสั่งตรวจ: `python tools/check.py` ครอบคลุม default ไม่มีแบรนด์, โลโก้อย่างเดียว, มาสคอตอย่างเดียว, custom branding, EZ preset, ปฏิเสธข้อมูลไม่ถูกต้อง/การเขียนทับ, HTML build และย้ายโฟลเดอร์ตอน การตรวจนี้ไม่แทนการ render และ QA วิดีโอจริง
 
-แหล่งต้นฉบับและ SHA-256 รายไฟล์อยู่ใน [SOURCE-MANIFEST.json](SOURCE-MANIFEST.json) คู่มือเริ่มใช้/สถานะอยู่ใน README นี้ ขั้นตอนผลิตอยู่ใน SKILL.md ส่วน theme tokens อยู่ใน frame.md และ CSS ให้แก้เมื่อเปลี่ยนพฤติกรรมหรือรูปลักษณ์ที่เกี่ยวข้อง
+สถานะ KIT-002: template และ preview ทั่วไปตรวจผ่านแล้ว รวม skill validator และตรวจภาพใน Chrome ที่ไม่มีแบรนด์, custom character, EZ preset และชื่อเรื่องยาว ไม่พบภาพหายหรือองค์ประกอบล้นกรอบ; ภาพใน docs มาจาก starter รุ่นนี้ ไม่ได้ render/ตรวจวิดีโอจริงในงานนี้
 
-เกณฑ์ส่งมอบ: ไฟล์ skill ตรงกับต้นฉบับ, scaffold และ HTML build ผ่าน `python tools/check.py`, ตรวจรายการไฟล์ก่อน commit และตรวจ SHA ของ branch main บน GitHub หลัง push การแพ็กนี้ไม่เปลี่ยนสถานะอนุมัติตอน S1E2 หรืออ้างว่าผลิตวิดีโอตอนใหม่แล้ว
-
-หลักฐาน local วันที่ 2026-10-26: `python tools/check.py` ผ่าน — SHA-256 ครบ 39 ไฟล์, Python/JSON parse, scaffold, ปฏิเสธการเขียนทับ, HTML build และไฟล์ assets ที่อ้างถึง; ตรวจรายการไฟล์และรูปแบบ token/private key ก่อน commit แล้ว ไม่ได้รัน TTS, capture, render หรือ visual QA
-
-ขั้นถัดไป: ใช้ kit สร้างตอนใหม่และตรวจเสียง/ภาพ/render ตาม workflow ก่อนส่งคลิปจริง
+README นี้เป็นคู่มือและสถานะหลัก รุ่นที่เผยแพร่คือ branch main บน GitHub; ขั้นถัดไปสำหรับผู้ใช้คือ clone, สร้าง preview แล้วเปลี่ยนเนื้อหาและภาพของตนเอง

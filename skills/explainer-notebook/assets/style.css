@@ -1,0 +1,97 @@
+/* Explainer Notebook — tokens from ../references/frame.md */
+@font-face { font-family: "Plex Thai"; src: url("fonts/IBMPlexSansThai-Regular.ttf"); font-weight: 400; }
+@font-face { font-family: "Plex Thai"; src: url("fonts/IBMPlexSansThai-Medium.ttf"); font-weight: 500; }
+@font-face { font-family: "Plex Thai"; src: url("fonts/IBMPlexSansThai-SemiBold.ttf"); font-weight: 600; }
+@font-face { font-family: "Plex Thai"; src: url("fonts/IBMPlexSansThai-Bold.ttf"); font-weight: 700; }
+@font-face { font-family: "Space Grotesk"; src: url("fonts/SpaceGrotesk.ttf"); font-weight: 300 700; }
+
+:root { --bg: #fbf7ee; --grid: rgba(31,42,68,0.06); --ink: #1f2a44; --muted: #666c7a; --accent: #0f8f83;
+  --accent-ink: #0d7a70; --marker: #ffe066; --sticky: #fff1a8; --pink: #ffd9d2; --white: #ffffff; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+#root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Plex Thai", sans-serif; color: var(--ink); }
+#ground, .notebook-ground { position: absolute; inset: 0; background-color: var(--bg);
+  background-image: linear-gradient(var(--grid) 2px, transparent 2px), linear-gradient(90deg, var(--grid) 2px, transparent 2px);
+  background-size: 48px 48px; }
+.scene { position: absolute; inset: 0; }
+
+/* type */
+.eyebrow { position: absolute; font-size: 32px; font-weight: 600; color: var(--accent-ink); }
+.h1 { position: absolute; font-size: 84px; font-weight: 700; line-height: 1.2; white-space: nowrap; }
+.h1.xl { font-size: 110px; }
+.h1.notebook-title { white-space: normal; overflow-wrap: anywhere; line-height: 1.25; }
+.h1.notebook-title.long { font-size: 64px; }
+.h2 { position: absolute; font-size: 64px; font-weight: 700; }
+.h1 .t { position: relative; }
+.hl { position: absolute; left: -12px; right: -12px; top: 52%; bottom: 4px; background: var(--marker); border-radius: 4px; transform-origin: left center; }
+.sub { position: absolute; font-size: 40px; font-weight: 500; color: var(--muted); }
+
+/* stickies */
+.sticky { position: absolute; padding: 26px 30px 24px; background: var(--sticky); border-radius: 4px; transform: rotate(var(--rot));
+  box-shadow: 0 18px 30px -14px rgba(31,42,68,0.35); font-size: 36px; font-weight: 500; line-height: 1.5; }
+.sticky .lab { font-family: "Space Grotesk", "Plex Thai"; font-size: 22px; font-weight: 700; letter-spacing: 0.1em; color: var(--accent-ink); margin-bottom: 20px; }
+.sticky.small { font-size: 32px; padding: 20px 24px; }
+.sticky.chipnote { font-size: 34px; font-weight: 700; padding: 16px 24px; background: var(--white); border: 3px solid var(--ink); box-shadow: 6px 6px 0 rgba(31,42,68,0.9); }
+.sticky.pink { background: var(--pink); }
+.sticky .foot { margin-top: 14px; font-size: 22px; color: var(--muted); line-height: 1.4; }
+.sticky ul { list-style: none; }
+.sticky li { padding-left: 34px; position: relative; font-size: 40px; font-weight: 600; }
+.sticky li::before { content: ""; position: absolute; left: 4px; top: 24px; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); }
+.mk { font-weight: 700; background-image: linear-gradient(var(--marker), var(--marker)); background-repeat: no-repeat; background-size: 100% 100%; background-position: 0 70%; padding: 0 4px; }
+.clock { position: relative; height: 120px; overflow: hidden; font-family: "Space Grotesk"; font-size: 120px; font-weight: 700; line-height: 1; }
+.clock span { position: absolute; left: 0; top: 0; }
+#s1-c1 { opacity: 0; }
+
+/* taped photos of real captures */
+.photo { position: absolute; transform: rotate(var(--rot)); }
+.photo .clipbox { position: absolute; inset: 0; overflow: hidden; border: 12px solid var(--white); box-shadow: 0 18px 30px -14px rgba(31,42,68,0.35); background: var(--white); }
+.photo .clipbox img { position: absolute; max-width: none; }
+.photo .tape { position: absolute; width: 150px; height: 40px; background: rgba(255,224,102,0.8); z-index: 2; }
+.photo .t1 { left: -36px; top: -16px; transform: rotate(-20deg); }
+.photo .t2 { right: -36px; top: -16px; transform: rotate(18deg); }
+.photo .scrib { position: absolute; left: 12px; top: 12px; overflow: visible; z-index: 3; }
+.ring { fill: none; stroke: var(--accent); stroke-width: 6; stroke-linecap: round; }
+
+/* bits */
+.bubble { position: absolute; padding: 16px 30px; background: var(--white); border: 3px solid var(--ink); border-radius: 28px; font-size: 34px; font-weight: 600; white-space: nowrap; }
+.bubble.big { left: 620px; top: 180px; font-size: 52px; padding: 22px 40px; }
+.chip { position: absolute; padding: 14px 28px; background: var(--ink); color: var(--bg); border-radius: 999px; font-size: 36px; font-weight: 700; transform: rotate(-2deg); }
+.mascot { position: absolute; height: auto; }
+.mails { position: absolute; left: 1150px; top: 300px; width: 620px; }
+.mail { position: relative; height: 92px; margin-bottom: 16px; background: var(--white); border: 3px solid var(--ink); border-radius: 10px; box-shadow: 5px 5px 0 rgba(31,42,68,0.85); }
+.mail i { position: absolute; left: 20px; top: 22px; width: 46px; height: 46px; border-radius: 50%; background: #d8d2c4; }
+.mail b { position: absolute; left: 86px; top: 24px; width: 300px; height: 16px; border-radius: 8px; background: #c9c2b2; }
+.mail span { position: absolute; left: 86px; top: 54px; width: 440px; height: 12px; border-radius: 6px; background: #e4ded0; }
+.steps { position: absolute; left: 1250px; top: 380px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.steps span { padding: 14px 30px; background: var(--white); border: 3px solid var(--ink); border-radius: 10px; box-shadow: 6px 6px 0 rgba(31,42,68,0.9); font-size: 40px; font-weight: 700; }
+.steps span:last-of-type { background: var(--accent); color: var(--white); border-color: var(--accent); }
+.steps i { font-style: normal; font-size: 36px; font-weight: 700; margin-left: 30px; color: var(--accent-ink); }
+.next { position: absolute; left: 150px; top: 640px; font-size: 40px; font-weight: 700; }
+.next .lab { display: inline-block; margin-right: 18px; padding: 6px 18px; background: var(--ink); color: var(--bg); border-radius: 8px; font-size: 28px; }
+.note { position: absolute; left: 150px; top: 730px; font-size: 26px; color: var(--muted); }
+
+/* chrome */
+#chrome { position: absolute; inset: 0; pointer-events: none; }
+.kick { position: absolute; left: 60px; top: 40px; font-size: 24px; font-weight: 600; color: var(--muted); }
+.logo { position: absolute; right: 60px; top: 30px; height: 52px; max-width: 300px; object-fit: contain; }
+.progress { position: absolute; left: 0; right: 0; bottom: 0; height: 8px; background: rgba(31,42,68,0.08); }
+#bar { width: 100%; height: 100%; background: var(--accent); transform-origin: left center; }
+
+/* subtitles: bottom keep-out band */
+.sub.clip { position: absolute; left: 0; right: 0; top: auto; bottom: 56px; display: flex; justify-content: center; pointer-events: none; font-size: inherit; color: inherit; }
+.sub.clip span { background: rgba(31,42,68,0.9); color: #fbf7ee; font-size: 38px; font-weight: 500; line-height: 1.45; padding: 10px 30px; border-radius: 12px; max-width: 1600px; text-align: center; }
+
+/* v2 motion helpers */
+.cursor { position: absolute; z-index: 5; width: 34px; height: 44px; opacity: 0; }
+.cursor svg path { fill: var(--ink); stroke: var(--white); stroke-width: 2; }
+.cursor .ripple { position: absolute; left: -26px; top: -26px; width: 56px; height: 56px; border-radius: 50%; border: 4px solid var(--accent); opacity: 0; }
+.spot { position: absolute; border-radius: 14px; box-shadow: 0 0 0 3000px rgba(31,42,68,0.42); opacity: 0; z-index: 2; }
+.spark { position: absolute; width: 110px; height: 110px; opacity: 0; }
+.spark path { fill: var(--marker); stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; }
+.confetti { position: absolute; left: 1480px; top: 380px; width: 0; height: 0; }
+.cf { position: absolute; width: 16px; height: 26px; border-radius: 3px; opacity: 0; }
+.cf.c0 { background: var(--accent); } .cf.c1 { background: var(--marker); } .cf.c2 { background: var(--ink); }
+.ckv { vertical-align: -4px; margin-right: 4px; }
+.ck { fill: none; stroke: var(--accent); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.typed .ty, .typed .ty2 { opacity: 0; }
+.caret { display: inline-block; width: 4px; height: 40px; margin-left: 4px; vertical-align: -8px; background: var(--ink); }

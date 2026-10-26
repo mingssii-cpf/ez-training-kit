@@ -1,6 +1,6 @@
 # eplib API (scripts/eplib.py)
 
-`init(ROOT, kick, end_hold=2.5, bgm_vol=0.12, capture=(1490,740))` — load timing.json; `capture` = raw shot size.
+`init(ROOT, kick, end_hold=2.5, bgm_vol=0.12, capture=(1490,740))` — load timing.json and brand.json; `capture` = raw shot size.
 Time: `L(sid,i)` line start · `S(sid)` scene start · `D(sid)` scene duration.
 
 | Need | Call |
@@ -20,7 +20,7 @@ Time: `L(sid,i)` line start · `S(sid)` scene start · `D(sid)` scene duration.
 | Confetti | `confetti_html(wrap_id)` in the scene + `confetti_burst(at)` |
 | Sound accent | `sfx(name, at, vol)`: pop, click, click-soft, typing, whoosh-short, ping, chime, sparkle, notification |
 | Raw GSAP | `ft(sel, from, to, at)` · `to(sel, props, at)` · `raw("  tl...;")` |
-| Write page | `write_page(SC)` — page-turn transitions + whoosh, VO, captions, SFX, bed, chrome (kick + logo + progress) |
+| Write page | `write_page(SC)` — timed index.html + static preview.html gallery; optional logo, VO and music |
 
-Layout safe zone: captions sit at bottom 56 px; keep content above y≈900. EZ images ≈ 300–600 px wide.
-CSS building blocks (assets/style.css): `.h1 .xl .h2 .eyebrow .sub .bubble(.big) .chip .clock .mails .steps .next .note .ez .spark`.
+Layout safe zone: captions sit at bottom 56 px; keep content above y≈900. Optional character images ≈ 300–600 px wide; use .mascot and object-fit:contain.
+CSS building blocks (assets/style.css): `.h1 .xl .h2 .eyebrow .sub .bubble(.big) .chip .clock .mails .steps .next .note .mascot .spark`.

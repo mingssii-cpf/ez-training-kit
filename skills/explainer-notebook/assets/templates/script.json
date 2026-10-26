@@ -1,0 +1,42 @@
+{
+  "title": "เข้าใจง่าย ลงมือทำได้",
+  "narrator": "Choose a narrator and voice for this project",
+  "lead_s": 0.35,
+  "tail_s": 0.75,
+  "facts_source": "Record the sources or tested workflow for the topic you teach",
+  "scenes": [
+    {
+      "id": "s1-hook",
+      "narration": "เข้าใจง่าย ลงมือทำได้",
+      "lines": [
+        "เข้าใจง่าย ลงมือทำได้"
+      ],
+      "visual": "Title and optional character, or a numbered notebook card"
+    },
+    {
+      "id": "s2-prompt",
+      "narration": "เริ่มจากเป้าหมายที่ชัด แล้วค่อยเติมข้อมูลที่จำเป็น",
+      "lines": [
+        "เริ่มจากเป้าหมายที่ชัด",
+        "แล้วค่อยเติมข้อมูลที่จำเป็น"
+      ],
+      "prompt": "สรุปเรื่องนี้เป็น 3 ประเด็น\nระบุสิ่งที่ต้องทำต่อ\nและคำถามที่ยังต้องตอบ",
+      "visual": "Editable prompt sticky and paper callout"
+    },
+    {
+      "id": "s3-steps",
+      "narration": "บอกเป้าหมาย ให้บริบท แล้วตรวจผลก่อนนำไปใช้",
+      "lines": [
+        "บอกเป้าหมาย",
+        "ให้บริบท",
+        "ตรวจผลก่อนนำไปใช้"
+      ],
+      "steps": [
+        "บอกเป้าหมาย",
+        "ให้บริบท",
+        "ตรวจผลก่อนใช้"
+      ],
+      "visual": "Three numbered notebook cards"
+    }
+  ]
+}

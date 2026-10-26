@@ -42,5 +42,7 @@
     "scripts/qa.py": "28ad7044edd51af0ee034ce36d581aa0371447bafc9b33ddcf47030ee59dbe7e",
     "scripts/redact.py": "22d0b5245d0d7862e7f03aaf2acd7451ca38cfba805f3067ec8d14f5907af85c",
     "SKILL.md": "8cbca985a21c6aba6a99a0eb9495400280b008e623590103deb594feb9b0ec07"
-  }
+  },
+  "scope": "Historical inventory of the original EZ skill, not current generalized-source checksums",
+  "baseline_commit": "bc2567181a4bf541ca461f0b1e64a6fd81aa222f"
 }

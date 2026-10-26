@@ -1,5 +1,6 @@
 # Generated episode data belongs to the production workspace.
 /episodes/
+/preview-work/
 **/node_modules/
 **/__pycache__/
 *.py[cod]
