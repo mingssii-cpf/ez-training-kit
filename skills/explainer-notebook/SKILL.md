@@ -1,11 +1,13 @@
 ---
 name: explainer-notebook
-description: Create or adapt Thai or English explainer and training-video visuals in a warm grid-paper notebook style, with taped screenshots, sticky prompts, marker highlights and numbered cards. Branding, mascot, subject and voice are optional project choices.
+description: Apply a warm grid-paper notebook theme to requested explainer or training media, including images, slides, HTML and video. Includes a reusable video starter. Branding, mascot, subject and voice are optional project choices.
 metadata:
-  version: "2.0.0"
+  version: "2.1.0"
 ---
 
 # Explainer Notebook
+
+For a GitHub-link request, read the repository's README.md then PROMPT.md for the portable theme brief and reference images. Produce the medium requested by the user; the Python/HyperFrames starter below is optional and specifically for a video composition. Do not force it on image or slide work.
 
 Reuse the visual language, not the original EZ identity. Default to no logo and no mascot. Do not assume CPF, HR, Copilot, a TTS provider, a signed-in account or an approved voice.
 
@@ -36,4 +38,4 @@ Open the generated preview.html for an offline static gallery. Its timing is syn
 
 Add --preset ez only when the user wants EZ/CPF branding. Custom --logo and --mascot flags override that preset. Those assets live in assets/presets/ez/public/ and are not copied into the default output.
 
-Keep the user's approved direction. Adapt existing components before adding a new visual system. Before delivery run the repository's tools/check.py, then the actual episode's check/render/QA as applicable; static proof does not establish rendered-video quality.
+Keep the user's approved direction. Adapt existing components before adding a new visual system. For repository/generator changes run the repository's tools/check.py. For video production run the actual episode's check/render/QA as applicable; static proof does not establish rendered-video quality. Theme-only image/slide work does not require installing or running this repository.
